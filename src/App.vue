@@ -16,7 +16,7 @@ export default {
         gameStarted: false,
         createGame: null,
         getGameData: null,
-        baseURL: 'http://x.cantelope.org/b/games/tetris',
+        baseURL: 'http://0.cantelope.org/b/games/tetris',
         gameLink: '',
         author: false,
         receivedGameData: {},
@@ -104,6 +104,8 @@ export default {
       })
       .then(res => res.json())
       .then(data => {
+        console.log('createGame data', data)
+        console.log('decToAlpha', this.decToAlpha(data[0]))
         if(data){
           this.state.author = true
           this.state.playerNumber = 'A'
@@ -113,8 +115,6 @@ export default {
       })
     },
     getMode(){
-    
-    
       let vars = []
       if(window.location.href.indexOf('?i=')!=-1){
         vars = window.location.href.split('?i=')[1].split('/')
@@ -167,15 +167,15 @@ export default {
       let bgimg
       switch(val){
         case 'cyberpunk':
-          bgimg = '2clPtA.jpg';
+          bgimg = 'https://srmcgann.github.io/assets/2clPtA.jpg';
           document.getElementsByTagName('body')[0].style.color = '#0f8'
           break
         case 'rainbows':
-          bgimg = '1ECv2A.jpg';
+          bgimg = 'https://srmcgann.github.io/assets/1ECv2A.jpg';
           document.getElementsByTagName('body')[0].style.color = '#ff0'
           break
         default:
-          bgimg = '1ECv2A.jpg';
+          bgimg = 'https://srmcgann.github.io/assets/1ECv2A.jpg';
           break
       }
       document.getElementsByTagName('body')[0].style.backgroundImage = 'url(' + bgimg + ')'
@@ -209,7 +209,7 @@ body{
   overflow: hidden;
   height:100vh;
   margin: 0;
-  background: #000 url(1ECv2A.jpg) no-repeat;
+  background: #000 url(https://srmcgann.github.io/assets/1ECv2A.jpg) no-repeat;
   background-position: center;
   background-size: cover;
   font-family: 'Varela Round';
@@ -254,3 +254,4 @@ canvas:focus{
   outline: none;
 }
 </style>
+

@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <a :href="window.location.href = state.baseURL"><div class="headerText">TETRIS<br>THE NEXT GENERATION</div></a>
+    <a href="javascript: window.location.href = /b/games/tetris"><div class="headerText">TETRIS<br>THE NEXT GENERATION</div></a>
     <canvas ref="headerCanvas"></canvas>
   </div>
 </template>
@@ -129,3 +129,4 @@ canvas{
   text-shadow: 0px 0px 10px #0f4;
 }
 </style>
+

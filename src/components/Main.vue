@@ -10,7 +10,7 @@
         <div style="display: inline-block;" v-if="state.author">
           <span ref="gamelink" class= "gamelink" v-html="processedGameLink" style="font-size: .75em;background: #001; display: inline-block"></span>
           <div style="display: inline-block;">
-            <button style="font-size: 14px;margin-left: 5px; padding: 5px; padding-left: 30px; padding-right: 1=5px; margin-top: 0px;background-image: url(19npcK.png);background-repeat: no-repeat;background-position: 5px 2px; text-shadow: 1px 1px 2px #000;background-size: 20px 20px; border: 1px solid #8888; background-color: #6fa8;border-radius: 8px;padding-top: 3;"
+            <button style="font-size: 14px;margin-left: 5px; padding: 5px; padding-left: 30px; padding-right: 1=5px; margin-top: 0px;background-image: url(https://srmcgann.github.io/assets/19npcK.png);background-repeat: no-repeat;background-position: 5px 2px; text-shadow: 1px 1px 2px #000;background-size: 20px 20px; border: 1px solid #8888; background-color: #6fa8;border-radius: 8px;padding-top: 3;"
             @click="copy()"
             :class="{'copied':state.linkCopied}"
             >copy</button><br>
@@ -102,7 +102,7 @@
         share this link with<br>up to 3 opponents!<br>
         <span ref="gamelink" class= "gamelink" v-html="processedGameLink" style="background: #001;"></span><br>
         <div class="copyButtonDiv" style="display: inline-block">
-          <button style="font-size: 18px;margin-left: 5px; padding: 15px; padding-left: 50px; padding-right: 10px; margin-top: 10px;background-image: url(19npcK.png);background-repeat: no-repeat;background-position: 5px 5px; text-shadow: 1px 1px 2px #000;background-size: 40px 40px; border: 1px solid #8888; background-color: #6fa8;border-radius: 8px;"
+          <button style="font-size: 18px;margin-left: 5px; padding: 15px; padding-left: 50px; padding-right: 10px; margin-top: 10px;background-image: url(https://srmcgann.github.io/assets/19npcK.png);background-repeat: no-repeat;background-position: 5px 5px; text-shadow: 1px 1px 2px #000;background-size: 40px 40px; border: 1px solid #8888; background-color: #6fa8;border-radius: 8px;"
           @click="copy()"
           :class="{'copied':state.linkCopied}"
           >copy</button><br>
@@ -531,7 +531,7 @@ export default {
         if(data){
           if(data[0] == 'error - game full'){
             alert('OOPS! game is full... you can create a new game though!')
-            window.location.href = window.location.origin
+            window.location.href = this.state.baseURL
           } else {
             if(data[2]){
               if(!(+data[2].playing)) this.state.gameActuallyPlaying = false
@@ -594,7 +594,7 @@ export default {
             } else {
               setTimeout(()=>{
                 this.pollServer()
-              }, 250)
+              }, 500)
             }
           }
         }
@@ -923,9 +923,9 @@ export default {
     },
     startGame(){
       if(this.state.singlePlayerMode) {
-				history.pushState(0, 0 , window.location.origin + '/game')
+				history.pushState(0, 0 , this.state.baseURL + '?i=/game')
       } else {
-        history.pushState(0, 0 , window.location.origin + '/game/' + this.state.decToAlpha(this.state.gameID) + '/a')
+        history.pushState(0, 0 , this.state.baseURL + '?i=/game/' + this.state.decToAlpha(this.state.gameID) + '/a')
 			}
 			this.state.stage = 1
       this.state.countdownTimer = 0
@@ -1014,7 +1014,7 @@ export default {
     this.t = 0
     this.c.width = this.c.clientWidth
     this.c.height = this.c.clientHeight
-    this.boardBG.src = 'https://lookie.jsbot.net/uploads/rjc4W.png'
+    this.boardBG.src = 'https://srmcgann.github.io/assets/rjc4W.png'
     if(this.state.author) this.gameActuallyPlaying = false
     this.$nextTick(()=>{
       if(this.state.stage != 1) this.$refs.userNameField.focus()
@@ -1110,3 +1110,4 @@ canvas{
   transform: translateY(-50%);
 }
 </style>
+
